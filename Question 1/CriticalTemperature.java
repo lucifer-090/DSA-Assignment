@@ -1,7 +1,5 @@
 // Question No 1 a.
 
-
-
 public class CriticalTemperature {
     public static int minMeasurements(int k, int n) {
         // Initialize dp array
