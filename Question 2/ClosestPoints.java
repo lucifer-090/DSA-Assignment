@@ -1,12 +1,13 @@
+// Question No. 2(b)
 import java.util.Arrays;
-
 public class ClosestPoints {
     public static void main(String[] args) {
-        int[] x_coords = {1, 2, 3, 2, 4};
-        int[] y_coords = {2, 3, 1, 2, 3};
+        int[] x_coords = { 1, 2, 3, 2, 4 };
+        int[] y_coords = { 2, 3, 1, 2, 3 };
 
         int[] result = findClosestPoints(x_coords, y_coords);
-        System.out.println("Indices of the closest pair of points: " + Arrays.toString(result)); // Expected Output: [0, 3]
+        System.out.println("Indices of the closest pair of points: " + Arrays.toString(result)); 
+        // Expected Output: [0,3]
     }
 
     public static int[] findClosestPoints(int[] x_coords, int[] y_coords) {
@@ -21,7 +22,8 @@ public class ClosestPoints {
                     int distance = Math.abs(x_coords[i] - x_coords[j]) + Math.abs(y_coords[i] - y_coords[j]);
 
                     // Check if we found a closer pair or if it's lexicographically smaller
-                    if (distance < minDistance || (distance == minDistance && (i < closestPair[0] || (i == closestPair[0] && j < closestPair[1])))) {
+                    if (distance < minDistance || (distance == minDistance && (i < closestPair[0] ||
+                            (i == closestPair[0] && j < closestPair[1])))) {
                         minDistance = distance;
                         closestPair[0] = i;
                         closestPair[1] = j;
@@ -33,3 +35,4 @@ public class ClosestPoints {
         return closestPair;
     }
 }
+

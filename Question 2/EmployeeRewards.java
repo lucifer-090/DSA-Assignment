@@ -1,3 +1,4 @@
+// Question no. 2(a)
 public class EmployeeRewards {
     public static void main(String[] args) {
         int[] ratings1 = {1, 0, 2};
@@ -10,32 +11,28 @@ public class EmployeeRewards {
     public static int minRewards(int[] ratings) {
         int n = ratings.length;
         int[] rewards = new int[n];
-        
         // Step 1: Initialize rewards
         for (int i = 0; i < n; i++) {
             rewards[i] = 1;
         }
-
         // Step 2: Left to Right
         for (int i = 1; i < n; i++) {
             if (ratings[i] > ratings[i - 1]) {
                 rewards[i] = rewards[i - 1] + 1;
             }
         }
-
         // Step 3: Right to Left
         for (int i = n - 2; i >= 0; i--) {
             if (ratings[i] > ratings[i + 1]) {
                 rewards[i] = Math.max(rewards[i], rewards[i + 1] + 1);
             }
         }
-
         // Step 4: Calculate total rewards
         int totalRewards = 0;
         for (int reward : rewards) {
             totalRewards += reward;
         }
-
         return totalRewards;
     }
 }
+
