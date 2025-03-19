@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.Timer;
 
-public class Tetrisgame extends JPanel implements ActionListener {
+public class TetrisGame extends JPanel implements ActionListener {
 
     private static final int TILE_SIZE = 30;
     private static final int BOARD_WIDTH = 10;
@@ -41,7 +41,7 @@ public class Tetrisgame extends JPanel implements ActionListener {
     private Block currentBlock;
     private Block nextBlock;
 
-    public Tetrisgame() {
+    public TetrisGame() {
         setPreferredSize(new Dimension(BOARD_WIDTH * TILE_SIZE + 120, BOARD_HEIGHT * TILE_SIZE));
         setBackground(Color.BLACK);
         setFocusable(true);
@@ -236,7 +236,7 @@ public class Tetrisgame extends JPanel implements ActionListener {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Tetris Game");
-        Tetrisgame game = new Tetrisgame();
+        TetrisGame game = new TetrisGame();
         frame.add(game);
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

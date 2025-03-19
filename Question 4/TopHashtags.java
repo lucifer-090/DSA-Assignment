@@ -1,22 +1,19 @@
+// Qestion No. 4(a)
 import java.util.*;
-
 class Tweet {
     int tweetId;
     String tweet;
     String tweetDate; // Format: "YYYY-MM-DD"
-
     Tweet(int tweetId, String tweet, String tweetDate) {
         this.tweetId = tweetId;
         this.tweet = tweet;
         this.tweetDate = tweetDate;
     }
 }
-
 public class TopHashtags {
     public static List<String[]> findTopHashtags(List<Tweet> tweets) {
         // Step 1: Map to store hashtag counts
         Map<String, Integer> hashtagCount = new HashMap<>();
-
         // Step 2: Process each tweet
         for (Tweet tweet : tweets) {
             // Filter for February 2024
@@ -30,7 +27,6 @@ public class TopHashtags {
                 }
             }
         }
-
         // Step 3: Sort hashtags by count and name
         List<Map.Entry<String, Integer>> sortedList = new ArrayList<>(hashtagCount.entrySet());
         sortedList.sort((a, b) -> {
@@ -40,17 +36,14 @@ public class TopHashtags {
             }
             return countCompare;
         });
-
         // Step 4: Prepare result (top 3)
         List<String[]> result = new ArrayList<>();
         for (int i = 0; i < Math.min(3, sortedList.size()); i++) {
             Map.Entry<String, Integer> entry = sortedList.get(i);
             result.add(new String[]{entry.getKey(), entry.getValue().toString()});
         }
-
         return result;
     }
-
     // Test the solution
     public static void main(String[] args) {
         List<Tweet> tweets = Arrays.asList(
@@ -61,7 +54,6 @@ public class TopHashtags {
             new Tweet(17, "#HappyDay is great", "2024-02-05"),
             new Tweet(18, "#TechLife rocks", "2024-02-06")
         );
-
         List<String[]> topHashtags = findTopHashtags(tweets);
         System.out.println("hashtag\thashtag_count");
         for (String[] entry : topHashtags) {
@@ -69,3 +61,4 @@ public class TopHashtags {
         }
     }
 }
+

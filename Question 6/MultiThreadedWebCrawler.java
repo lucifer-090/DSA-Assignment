@@ -1,5 +1,4 @@
 //question.no.6.b
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,9 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
 public class MultiThreadedWebCrawler {
-
     // Thread-safe queue for URLs to crawl
     private ConcurrentLinkedQueue<String> urlQueue = new ConcurrentLinkedQueue<>();
     // Thread-safe map to store crawled data
@@ -24,20 +21,16 @@ public class MultiThreadedWebCrawler {
     public MultiThreadedWebCrawler(int numThreads) {
         executorService = Executors.newFixedThreadPool(numThreads);
     }
-
     // Task to crawl a URL
     class CrawlTask implements Callable<String> {
         private String url;
-
         public CrawlTask(String url) {
             this.url = url;
         }
-
         @Override
         public String call() {
             return fetchWebPage(url);
         }
-
         private String fetchWebPage(String url) {
             StringBuilder content = new StringBuilder();
             try {
@@ -59,14 +52,12 @@ public class MultiThreadedWebCrawler {
             return content.toString();
         }
     }
-
     // Add URLs to the queue
     public void addUrls(List<String> newUrls) {
         for (String newUrl : newUrls) {
             urlQueue.add(newUrl);
         }
     }
-
     // Start the crawling process
     public void startCrawling() {
         while (!urlQueue.isEmpty()) {
@@ -78,7 +69,6 @@ public class MultiThreadedWebCrawler {
         // Shutdown executor after tasks are completed
         executorService.shutdown();
     }
-
     // Main method to run the crawler
     public static void main(String[] args) {
         MultiThreadedWebCrawler crawler = new MultiThreadedWebCrawler(10); // 10 threads
